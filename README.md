@@ -33,6 +33,8 @@ This project demonstrates OOP concepts, file handling, and real-world logic impl
 - Automatically loads data on startup
 - Auto-saves after every operation
 
+![Library Menu](docs/images/menu.png)
+
 ---
 
 ## Technologies Used

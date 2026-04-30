@@ -16,8 +16,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n1.Add Book \n2.View Books \n3.Search Books \n4.Delete Book");
-            System.out.println("5.Register Member \n6.Borrow Book \n7.Return Book \n8.Statistics \n9.Exit");
+            System.out.println("\n1.Add Book 2.View Books 3.Search Books 4.Delete Book 5.Register Member 6.Borrow Book 7.Return Book 8.Statistics 9.Exit");
 
             int ch = sc.nextInt();
             sc.nextLine();
