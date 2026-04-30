@@ -16,21 +16,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n1.Add Book");
-            System.out.println("2.View Books");
-            System.out.println("3.Search Books");
-            System.out.println("4.Delete Book");
-            System.out.println("5.Register Member");
-            System.out.println("6.Borrow Book");
-            System.out.println("7.Return Book");
-            System.out.println("8.Statistics");
-            System.out.println("9.Exit");
+            System.out.println("\n1.Add Book \n2.View Books \n3.Search Books \n4.Delete Book");
+            System.out.println("5.Register Member \n6.Borrow Book \n7.Return Book \n8.Statistics \n9.Exit");
 
             int ch = sc.nextInt();
             sc.nextLine();
 
             switch (ch) {
-
                 case 1:
                     System.out.print("ID: ");
                     String id = sc.nextLine();
@@ -39,11 +31,10 @@ public class Main {
                     System.out.print("Author: ");
                     String a = sc.nextLine();
                     lib.addBook(new Book(id, t, a));
+                    FileHandler.saveBooks(lib.getBooks(), BOOK_FILE);
                     break;
 
-                case 2:
-                    lib.viewBooks();
-                    break;
+                case 2: lib.viewBooks(); break;
 
                 case 3:
                     System.out.print("Search: ");
@@ -51,16 +42,18 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Enter Book ID to delete: ");
+                    System.out.print("ID: ");
                     lib.deleteBook(sc.nextLine());
+                    FileHandler.saveBooks(lib.getBooks(), BOOK_FILE);
                     break;
 
                 case 5:
-                    System.out.print("Member ID: ");
+                    System.out.print("ID: ");
                     String mid = sc.nextLine();
                     System.out.print("Name: ");
                     String name = sc.nextLine();
                     lib.addMember(new Member(mid, name));
+                    FileHandler.saveMembers(lib.getMembers(), MEMBER_FILE);
                     break;
 
                 case 6:
@@ -69,11 +62,13 @@ public class Main {
                     System.out.print("Member ID: ");
                     String mem = sc.nextLine();
                     lib.borrow(bid, mem);
+                    FileHandler.saveBooks(lib.getBooks(), BOOK_FILE);
                     break;
 
                 case 7:
                     System.out.print("Book ID: ");
                     lib.returnBook(sc.nextLine());
+                    FileHandler.saveBooks(lib.getBooks(), BOOK_FILE);
                     break;
 
                 case 8:
@@ -85,9 +80,6 @@ public class Main {
                     FileHandler.saveMembers(lib.getMembers(), MEMBER_FILE);
                     System.out.println("Saved & Exit.");
                     return;
-
-                default:
-                    System.out.println("Invalid choice.");
             }
         }
     }

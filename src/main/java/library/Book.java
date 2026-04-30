@@ -3,9 +3,7 @@ package library;
 import java.time.LocalDate;
 
 public class Book {
-    private String id;
-    private String title;
-    private String author;
+    private String id, title, author;
     private boolean borrowed;
     private String borrowedBy;
     private LocalDate dueDate;
@@ -14,13 +12,11 @@ public class Book {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.borrowed = false;
     }
 
     public String getId() { return id; }
     public String getTitle() { return title; }
     public boolean isBorrowed() { return borrowed; }
-    public String getBorrowedBy() { return borrowedBy; }
     public LocalDate getDueDate() { return dueDate; }
 
     public void borrow(String memberId) {
@@ -50,7 +46,6 @@ public class Book {
         return b;
     }
 
-    @Override
     public String toString() {
         return id + " | " + title + " | " + author + " | " +
                 (borrowed ? "Borrowed (Due: " + dueDate + ")" : "Available");

@@ -1,8 +1,7 @@
 package library;
 
 public class Member {
-    private String id;
-    private String name;
+    private String id, name;
 
     public Member(String id, String name) {
         this.id = id;
@@ -20,7 +19,6 @@ public class Member {
         return new Member(p[0], p[1]);
     }
 
-    @Override
     public String toString() {
         return id + " | " + name;
     }

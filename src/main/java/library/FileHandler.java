@@ -8,62 +8,71 @@ public class FileHandler {
     public static List<Book> loadBooks(String path) {
         List<Book> list = new ArrayList<>();
         try {
-            File f = new File(path);
-            if (!f.exists()) return list;
+            File file = new File(path);
+            if (!file.exists()) return list;
 
-            BufferedReader br = new BufferedReader(new FileReader(f));
+            BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
             while ((line = br.readLine()) != null) {
                 list.add(Book.fromFile(line));
             }
             br.close();
         } catch (Exception e) {
-            System.out.println("Error loading books.");
+            e.printStackTrace();
         }
         return list;
     }
 
     public static void saveBooks(List<Book> books, String path) {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+            File file = new File(path);
+
+            // 🔥 auto-create folder
+            file.getParentFile().mkdirs();
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             for (Book b : books) {
                 bw.write(b.toFile());
                 bw.newLine();
             }
             bw.close();
         } catch (Exception e) {
-            System.out.println("Error saving books.");
+            e.printStackTrace();
         }
     }
 
     public static List<Member> loadMembers(String path) {
         List<Member> list = new ArrayList<>();
         try {
-            File f = new File(path);
-            if (!f.exists()) return list;
+            File file = new File(path);
+            if (!file.exists()) return list;
 
-            BufferedReader br = new BufferedReader(new FileReader(f));
+            BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
             while ((line = br.readLine()) != null) {
                 list.add(Member.fromFile(line));
             }
             br.close();
         } catch (Exception e) {
-            System.out.println("Error loading members.");
+            e.printStackTrace();
         }
         return list;
     }
 
     public static void saveMembers(List<Member> members, String path) {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+            File file = new File(path);
+
+            file.getParentFile().mkdirs();
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             for (Member m : members) {
                 bw.write(m.toFile());
                 bw.newLine();
             }
             bw.close();
         } catch (Exception e) {
-            System.out.println("Error saving members.");
+            e.printStackTrace();
         }
     }
 }
